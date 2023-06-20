@@ -101,4 +101,23 @@ def order():
 @cross_origin()
 def help_page():
     try:
-        return render_template("/help/help.html", user_id=session.get('user_id
+        return render_template("/help/help.html", user_id=session.get('user_id'))
+    except Exception as e:
+        return jsonify({
+            "message": str(e),
+            "status": "error"
+        }), 400
+
+# Editor route
+@views.route("/editor")
+@cross_origin()
+def editor():
+    try:
+        return render_template("/editor/editor.html")
+    except Exception as e:
+        return jsonify({
+            "message": str(e),
+            "status": "error"
+        }), 400
+
+    
